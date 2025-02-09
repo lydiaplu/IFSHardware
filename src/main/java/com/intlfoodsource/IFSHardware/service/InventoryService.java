@@ -59,17 +59,17 @@ public class InventoryService implements IInventoryService{
 
     @Override
     public List<Inventory> getInventoryByHardwareName(String hardwareName) {
-        return List.of();
+        return inventoryRepository.findInventoryByHardwareName(hardwareName);
     }
 
     @Override
     public List<Inventory> getInventoryByLocationId(Integer locationId) {
-        return List.of();
+        return inventoryRepository.findInventoryByLocationId(locationId);
     }
 
     @Override
     public List<Inventory> getInventoryByLocationName(String locationName) {
-        return List.of();
+        return inventoryRepository.findInventoryByLocationName(locationName);
     }
 
     private void setInventoryModel(Inventory inventory, InventoryRequest inventoryRequest) {

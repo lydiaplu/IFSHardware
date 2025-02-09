@@ -1,5 +1,6 @@
 package com.intlfoodsource.IFSHardware.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,6 +36,7 @@ public class HardwareDocument {
 
     @ManyToOne
     @JoinColumn(name = "hardware_id", nullable = false)
+    @JsonBackReference("documents")
     private Hardware hardware;
 
     public HardwareDocument() {

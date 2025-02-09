@@ -7,15 +7,10 @@ import com.intlfoodsource.IFSHardware.response.ApiResponse;
 import com.intlfoodsource.IFSHardware.response.HardwareCategoryResponse;
 import com.intlfoodsource.IFSHardware.service.HardwareCategoryService;
 import lombok.RequiredArgsConstructor;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -38,7 +33,7 @@ public class HardwareCategoryController {
             @PathVariable Integer categoryId,
             @RequestBody HardwareCategoryRequest hardwareCategoryRequest
     ) {
-        HardwareCategory savedHardwareCategory = hardwareCategoryService.addHardwareCategory(hardwareCategoryRequest);
+        HardwareCategory savedHardwareCategory = hardwareCategoryService.updateHardwareCategory(categoryId, hardwareCategoryRequest);
         HardwareCategoryResponse hardwareCategoryResponse = hardwareCategoryMapper.toHardwareCategoryResponse(savedHardwareCategory);
         return ResponseEntity.ok(ApiResponse.success(hardwareCategoryResponse));
     }

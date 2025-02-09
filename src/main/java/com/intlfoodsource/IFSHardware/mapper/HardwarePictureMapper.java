@@ -6,7 +6,7 @@ import com.intlfoodsource.IFSHardware.response.HardwarePictureResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface HardwarePictureMapper {
     // model -> response
     HardwarePictureResponse toHardwarePictureResponse(HardwarePicture hardwarePicture);

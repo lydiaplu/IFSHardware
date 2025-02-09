@@ -1,5 +1,6 @@
 package com.intlfoodsource.IFSHardware.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.intlfoodsource.IFSHardware.enums.InventoryStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,6 +31,7 @@ public class Inventory {
 
     @OneToOne
     @JoinColumn(name = "hardware_id", nullable = false)
+    @JsonManagedReference("hardware")
     private Hardware hardware;
 
     @ManyToOne

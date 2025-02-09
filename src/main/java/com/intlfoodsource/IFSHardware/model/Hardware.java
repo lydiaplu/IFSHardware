@@ -1,5 +1,7 @@
 package com.intlfoodsource.IFSHardware.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,16 +32,24 @@ public class Hardware {
     @JoinColumn(name = "category_id", nullable = false)
     private HardwareCategory category;
 
+    @OneToOne(mappedBy = "hardware",
+            cascade = CascadeType.ALL
+    )
+    @JsonBackReference("hardware")
+    private Inventory inventory;
+
     @OneToMany(mappedBy = "hardware",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
+    @JsonManagedReference("pictures")
     private List<HardwarePicture> hardwarePictures;
 
     @OneToMany(mappedBy = "hardware",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
+    @JsonManagedReference("documents")
     private List<HardwareDocument> hardwareDocuments;
 
     public Hardware() {
